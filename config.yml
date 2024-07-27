@@ -1,0 +1,7 @@
+tg:
+  token: token tg bota
+  channel: channel_link
+
+vk:
+  token: vk_token
+  long: long_id
