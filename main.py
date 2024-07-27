@@ -6,21 +6,18 @@ import yaml
 import os
 import jobs
 
-# Load configuration from config.yml
 with open("config.yml", "r") as config_file:
     config = yaml.safe_load(config_file)
 
-# Extract configuration data
 tg_token = config["tg"]["token"]
 tg_channel = "@" + config["tg"]["channel"]
 vk_token = config["vk"]["token"]
 vk_group_id = config["vk"]["long"]
 
-# Initialize Telegram and VK bots with loaded configuration
 bot = telebot.TeleBot(tg_token)
 vk = vk_api.VkApi(token=vk_token)
-vk.http.headers.update({'Connection': 'close'})  # Обновляем заголовки запроса для закрытия соединения после каждого запроса
-vk.http.timeout = 1000  # Устанавливаем тайм-аут на 10 секунд (или любое другое подходящее значение)
+vk.http.headers.update({'Connection': 'close'})
+vk.http.timeout = 1000
 long = VkBotLongPoll(vk, vk_group_id)
 
 def vk_bot():
