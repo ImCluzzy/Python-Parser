@@ -11,7 +11,7 @@ def send_message_with_attachments_to_telegram(text, attachments):
 
     if photo_attachments:
         photo_url = get_largest_photo_url(photo_attachments[0])
-        caption = truncate_text(text)  # Truncate caption to fit within 1024 characters
+        caption = truncate_text(text)
         photo = telebot.types.InputMediaPhoto(media=photo_url, caption=caption, parse_mode='HTML')
         media.append(photo)
 
